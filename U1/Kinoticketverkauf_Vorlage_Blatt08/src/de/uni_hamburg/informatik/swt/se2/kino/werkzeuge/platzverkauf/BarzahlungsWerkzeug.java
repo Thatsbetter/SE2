@@ -3,15 +3,15 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 // Meine Erste Aenderung
 // Die Klasse muess geaendert werden
 
-public class Barzahlungswerkzeug
+public class BarzahlungsWerkzeug
 {
 
-    public BarzahlungswerkzeugUI _UI;
+    public BarzahlungsWerkzeugUI _UI;
     private int _preis;
 
-    public Barzahlungswerkzeug()
+    public BarzahlungsWerkzeug()
     {
-        _UI = new BarzahlungswerkzeugUI();
+        _UI = new BarzahlungsWerkzeugUI();
         _preis = 0;
     }
 

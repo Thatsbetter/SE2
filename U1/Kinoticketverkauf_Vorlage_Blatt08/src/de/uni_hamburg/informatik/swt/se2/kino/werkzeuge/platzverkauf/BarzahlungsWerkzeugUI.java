@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class BarzahlungswerkzeugUI
+public class BarzahlungsWerkzeugUI
 {
     public JDialog _dialog;
 
@@ -22,7 +22,7 @@ public class BarzahlungswerkzeugUI
     
     
 
-    public BarzahlungswerkzeugUI()
+    public BarzahlungsWerkzeugUI()
     {
         _dialog = new JDialog();
         _dialog.setSize(300, 150);////////// am besten nach unten vor dem set visible moven 
