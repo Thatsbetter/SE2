@@ -14,17 +14,16 @@ Aufgabenverteilung:
 
 L: + BarzahlungsWerkzeug(preis : int)
 
-T: - registriereUIAktionen() : void
-
 L: - istBetragGueltig(s : String): boolean
  
 L: - restBetragBerechnen(b : int): int
  
 L: - restBetragAendern(b: int ):void
 
-T: - meldeFehler(): void 
 
-?: -warVerkaufErfolgreich():boolean
+T: - meldeFehler(): void 
+ 
+T: - registriereUIAktionen() : void
 
 T: -abbrechenBtnGedrueckt : void
  
@@ -32,3 +31,5 @@ T: -okBtnGedrueckt : void
 
 T: -setzeOKButtonAktiv(boolean aktiv):void
 
+
+?: -warVerkaufErfolgreich():boolean
