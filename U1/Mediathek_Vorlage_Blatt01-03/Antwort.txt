@@ -1,8 +1,0 @@
-1.2.1 a)Man kann auf die Kunden clicken und deren Details sehen
-		Details von Medien sehen.
-    b) Ausleiheaussicht funktioniert nicht
-    c)Die Funktion Suche
-1.2 16 TestKlassen
-
-
-2.2.5 die Methode VerleiheAn macht nichts
