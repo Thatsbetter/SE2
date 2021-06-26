@@ -1,0 +1,12 @@
+codetogether.auth.token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd3d3LmNvZGV0b2dldGhlci5jb20iLCJpYXQiOjE2MjI3MzczMDIsIm5iZiI6MTYyMjczNzMwMiwiZXhwIjoxNjM4Mjg5MzAyLCJkYXRhIjp7InVzZXIiOnsiaWQiOiIyMjUwNiJ9fX0.1gSj4unyy4UJh1u6L6T5L8WarUVaDnrGU8SYPUs299Q
+codetogether.hostname=Taha
+codetogether.main.view.displayed=true
+codetogether.username=s_r_m_t@yahoo.com
+default.auth=prompt
+default.drive=all
+default.edit=all
+default.team.only=false
+eclipse.preferences.version=1
+first.feedback=1622763046940
+last.feedback=1624629904997
+uuid=sxMDqZipyykiBmQhvQjLFg

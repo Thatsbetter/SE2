@@ -1,0 +1,53 @@
+package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+//documentlistener anti drag and drop
+public class Barzahlungswerkzeug
+{
+
+    public BarzahlungswerkzeugUI _ui;
+    private int _preis;
+
+    public Barzahlungswerkzeug()
+    {
+        _ui = new BarzahlungswerkzeugUI();
+        registriereUIAktionen();
+    }
+
+    private void registriereUIAktionen()
+    {
+        _ui.getOkButton()
+            .addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    something();
+                  
+                }
+            });
+
+        _ui.getAbbrechenButton()
+            .addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    _ui.schliesseFenster(); // fenster schliessen
+                }
+            });
+
+    }
+
+    public void fensterOeffnen(int preis)
+    {
+        _preis = preis;
+        _ui.getDialog()
+            .setVisible(true);
+    }
+    public void something() {
+        
+    }
+}

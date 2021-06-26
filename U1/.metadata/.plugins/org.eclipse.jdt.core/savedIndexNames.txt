@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\Taha\projects\java\SE2\U1\.metadata\.plugins\org.eclipse.jdt.core
+2768212763.index
+876646026.index
+1203711039.index
+651557858.index
+2567076152.index

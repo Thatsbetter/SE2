@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Mediathek_Vorlage_Blatt01-03">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Mediathek_Vorlage_Blatt01-03.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Mediathek_Vorlage_Blatt01-03.zip!/Mediathek_Vorlage_Blatt01-03/src" />
+    </SOURCES>
+  </library>
+</component>

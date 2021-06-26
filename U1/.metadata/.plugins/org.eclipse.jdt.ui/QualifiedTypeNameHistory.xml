@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="Medium"/>
+    <fullyQualifiedTypeName name="VerleihServiceImpl"/>
+    <fullyQualifiedTypeName name="Videospiel"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.views.AbstractView"/>
+    <fullyQualifiedTypeName name="AbstractMedium"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="Geldbetrag"/>
+    <fullyQualifiedTypeName name="VerleihProtokollierer"/>
+    <fullyQualifiedTypeName name="Verleihkarte"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="ProtokollierException"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="de.uni_hamburg.informatik.swt.se2.mediathek.materialien.Kunde"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.Beobachter"/>
+    <fullyQualifiedTypeName name="de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.Beobachtbar"/>
+</qualifiedTypeNameHistroy>
