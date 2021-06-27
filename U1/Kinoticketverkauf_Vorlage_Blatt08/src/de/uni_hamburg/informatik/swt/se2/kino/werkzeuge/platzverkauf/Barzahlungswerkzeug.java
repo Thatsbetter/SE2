@@ -62,7 +62,7 @@ public class Barzahlungswerkzeug
 
     private void abbrechenButtonGedrueckt()
     {
-        _ui.getZuZahlenTextField()
+        _ui.getZuZahlenTextField();
 
     }
 
