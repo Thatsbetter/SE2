@@ -6,13 +6,33 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 public class Barzahlungswerkzeug
 {
 
-    public BarzahlungswerkzeugUI _UI;
+    public BarzahlungswerkzeugUI _ui;
     private int _preis;
 
     public Barzahlungswerkzeug()
     {
-        _UI = new BarzahlungswerkzeugUI();
+        _ui = new BarzahlungswerkzeugUI();
         _preis = 0;
+    }
+
+    private void registriereUIAktionen()
+    {
+
+    }
+
+    private void abbrechenBtnGedrueckt()
+    {
+
+    }
+
+    private void okBtnGedrueckt()
+    {
+
+    }
+
+    private void setzeOKButtonAktiv(boolean aktiv)
+    {
+
     }
 
     public int getPreis()
