@@ -20,7 +20,7 @@ public class BarzahlungswerkzeugUI
     private JButton _abbrechenButton;
 
     private JTextField textfield0;
-    private JTextField textfield1;
+    private JTextField _zuZahlenTextField;
     private JTextField textfield2;
 
     public BarzahlungswerkzeugUI()
@@ -38,10 +38,10 @@ public class BarzahlungswerkzeugUI
 
         _Betrag = new JPanel();
         textfield0 = new JTextField("10");
-        textfield1 = new JTextField("Bereits Bezahlt");
+        _zuZahlenTextField = new JTextField("Bereits Bezahlt");
         textfield2 = new JTextField("noch zu zahlen");
         _Betrag.add(textfield0);
-        _Betrag.add(textfield1);
+        _Betrag.add(_zuZahlenTextField);
         _Betrag.add(textfield2);
 
         _buttonPanel = new JPanel();
@@ -73,6 +73,11 @@ public class BarzahlungswerkzeugUI
     public JButton getAbbrechenButton()
     {
         return _abbrechenButton;
+    }
+
+    public JTextField getZuZahlenTextField()
+    {
+        return _zuZahlenTextField;
     }
 
 }
