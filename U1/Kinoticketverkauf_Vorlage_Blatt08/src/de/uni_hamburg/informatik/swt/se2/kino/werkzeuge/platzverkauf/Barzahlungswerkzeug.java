@@ -69,11 +69,15 @@ public class Barzahlungswerkzeug
     private void okButtonGedrueckt()
     {
 
+        //TODO:
+        //check if RestBetrag is more than GesamtBetrag if yes, set warVerkaufErfolgreich on true
+
     }
 
     private void setzeOKButtonAktiv(boolean aktiv)
     {
-
+        _ui.getOKButton()
+            .setEnabled(aktiv);
     }
 
     public int getPreis()
