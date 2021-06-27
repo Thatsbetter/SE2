@@ -12,46 +12,44 @@ public class BarzahlungswerkzeugUI
 {
     public JDialog _dialog;
 
-    private JPanel _Titel;
-    private JPanel _Betrag;
-    private JPanel _Buttons;
+    private JPanel _titel;
+    private JPanel _betrag;
+    private JPanel _okbuttons;
 
     private JTextField textfield0;
     private JTextField textfield1;
     private JTextField textfield2;
-    
-    
 
     public BarzahlungswerkzeugUI()
     {
         _dialog = new JDialog();
         _dialog.setSize(300, 150);////////// am besten nach unten vor dem set visible moven 
 
-        _Titel = new JPanel();
+        _titel = new JPanel();
         JLabel label1 = new JLabel("Gesamtbetrag");
         JLabel label2 = new JLabel("Bereits Bezahlt");
         JLabel label3 = new JLabel("noch zu zahlen");
-        _Titel.add(label1);
-        _Titel.add(label2);
-        _Titel.add(label3);
+        _titel.add(label1);
+        _titel.add(label2);
+        _titel.add(label3);
 
-        _Betrag = new JPanel();
+        _betrag = new JPanel();
         textfield0 = new JTextField("10");
         textfield1 = new JTextField("Bereits Bezahlt");
         textfield2 = new JTextField("noch zu zahlen");
-        _Betrag.add(textfield0);
-        _Betrag.add(textfield1);
-        _Betrag.add(textfield2);
+        _betrag.add(textfield0);
+        _betrag.add(textfield1);
+        _betrag.add(textfield2);
 
-        _Buttons = new JPanel();
+        _okbuttons = new JPanel();
         JButton button1 = new JButton("ok");
         JButton button2 = new JButton("abbrechen");
-        _Buttons.add(button1);
-        _Buttons.add(button2);
+        _okbuttons.add(button1);
+        _okbuttons.add(button2);
 
-        _dialog.add(_Titel, BorderLayout.SOUTH);
-        _dialog.add(_Betrag, BorderLayout.CENTER);
-        _dialog.add(_Buttons, BorderLayout.NORTH);
+        _dialog.add(_titel, BorderLayout.SOUTH);
+        _dialog.add(_betrag, BorderLayout.CENTER);
+        _dialog.add(_okbuttons, BorderLayout.NORTH);
 
         _dialog.setVisible(true);
     }
@@ -63,6 +61,10 @@ public class BarzahlungswerkzeugUI
     {
         _dialog.dispose();
     }
-    
-    
+
+    public JButton getOKButton()
+    {
+        return getOKButton()
+    }
+
 }
