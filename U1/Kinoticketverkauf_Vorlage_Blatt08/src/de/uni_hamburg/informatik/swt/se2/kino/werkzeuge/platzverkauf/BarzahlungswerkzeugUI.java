@@ -12,9 +12,12 @@ public class BarzahlungswerkzeugUI
 {
     public JDialog _dialog;
 
-    private JPanel _titel;
-    private JPanel _betrag;
-    private JPanel _okbuttons;
+    private JPanel _Titel;
+    private JPanel _Betrag;
+    private JPanel _buttonPanel;
+
+    private JButton _okButton;
+    private JButton _abbrechenButton;
 
     private JTextField textfield0;
     private JTextField textfield1;
@@ -25,31 +28,31 @@ public class BarzahlungswerkzeugUI
         _dialog = new JDialog();
         _dialog.setSize(300, 150);////////// am besten nach unten vor dem set visible moven 
 
-        _titel = new JPanel();
+        _Titel = new JPanel();
         JLabel label1 = new JLabel("Gesamtbetrag");
         JLabel label2 = new JLabel("Bereits Bezahlt");
         JLabel label3 = new JLabel("noch zu zahlen");
-        _titel.add(label1);
-        _titel.add(label2);
-        _titel.add(label3);
+        _Titel.add(label1);
+        _Titel.add(label2);
+        _Titel.add(label3);
 
-        _betrag = new JPanel();
+        _Betrag = new JPanel();
         textfield0 = new JTextField("10");
         textfield1 = new JTextField("Bereits Bezahlt");
         textfield2 = new JTextField("noch zu zahlen");
-        _betrag.add(textfield0);
-        _betrag.add(textfield1);
-        _betrag.add(textfield2);
+        _Betrag.add(textfield0);
+        _Betrag.add(textfield1);
+        _Betrag.add(textfield2);
 
-        _okbuttons = new JPanel();
-        JButton button1 = new JButton("ok");
-        JButton button2 = new JButton("abbrechen");
-        _okbuttons.add(button1);
-        _okbuttons.add(button2);
+        _buttonPanel = new JPanel();
+        _okButton = new JButton("ok");
+        _abbrechenButton = new JButton("abbrechen");
+        _buttonPanel.add(_okButton);
+        _buttonPanel.add(_abbrechenButton);
 
-        _dialog.add(_titel, BorderLayout.SOUTH);
-        _dialog.add(_betrag, BorderLayout.CENTER);
-        _dialog.add(_okbuttons, BorderLayout.NORTH);
+        _dialog.add(_Titel, BorderLayout.SOUTH);
+        _dialog.add(_Betrag, BorderLayout.CENTER);
+        _dialog.add(_buttonPanel, BorderLayout.NORTH);
 
         _dialog.setVisible(true);
     }
@@ -64,7 +67,12 @@ public class BarzahlungswerkzeugUI
 
     public JButton getOKButton()
     {
-        return getOKButton()
+        return _okButton;
+    }
+
+    public JButton getAbbrechenButton()
+    {
+        return _abbrechenButton;
     }
 
 }
