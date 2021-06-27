@@ -1,5 +1,8 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 // Meine Erste Aenderung
 // Die Klasse muess geaendert werden
 
@@ -17,15 +20,53 @@ public class Barzahlungswerkzeug
 
     private void registriereUIAktionen()
     {
+        _ui.getOKButton()
+            .addActionListener(new ActionListener()
+            {
+
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    okButtonGedrueckt();
+
+                }
+            });
+
+        _ui.getAbbrechenButton()
+            .addActionListener(new ActionListener()
+            {
+
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    abbrechenButtonGedrueckt();
+
+                }
+            });
+
+        _ui.getZuZahlenTextField()
+            .addActionListener(new ActionListener()
+            {
+
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    //TODO:
+                    // add  istBetragGueltig()
+                    // add restBetragBerechnen()
+
+                }
+            });
 
     }
 
-    private void abbrechenBtnGedrueckt()
+    private void abbrechenButtonGedrueckt()
     {
+        _ui.getZuZahlenTextField()
 
     }
 
-    private void okBtnGedrueckt()
+    private void okButtonGedrueckt()
     {
 
     }
