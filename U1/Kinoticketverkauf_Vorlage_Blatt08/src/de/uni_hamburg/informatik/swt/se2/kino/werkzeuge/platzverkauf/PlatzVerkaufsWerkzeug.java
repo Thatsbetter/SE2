@@ -25,6 +25,8 @@ public class PlatzVerkaufsWerkzeug
 {
     // Die aktuelle Vorstellung, deren Plätze angezeigt werden. Kann null sein.
     private Vorstellung _vorstellung;
+    
+    private int _preis;
 
     private PlatzVerkaufsWerkzeugUI _ui;
 
@@ -92,7 +94,12 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-        verkaufePlaetze(_vorstellung);
+    	new BarzahlungsWerkzeug(_preis);
+    	
+//    	TODO: Beobachtermuster oder nicht?
+//    	
+//    	verkaufePlaetze(_vorstellung);
+    	
     }
 
     /**
@@ -115,15 +122,15 @@ public class PlatzVerkaufsWerkzeug
     {
         if (istVerkaufenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+        	_preis = _vorstellung.getPreisFuerPlaetze(plaetze);
             _ui.getPreisLabel().setText(
-                    "Gesamtpreis: " + preis + " Eurocent");
+                    "Gesamtpreis: " + _preis + " Eurocent");
         }
         else if (istStornierenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+        	_preis = _vorstellung.getPreisFuerPlaetze(plaetze);
             _ui.getPreisLabel().setText(
-                    "Gesamtstorno: " + preis + " Eurocent");
+                    "Gesamtstorno: " + _preis + " Eurocent");
         }
         else if (!plaetze.isEmpty())
         {
