@@ -3,10 +3,12 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
+
 // Meine Erste Aenderung
 // Die Klasse muess geaendert werden
 
-public class BarzahlungsWerkzeug
+public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 {
 
     public BarzahlungsWerkzeugUI _ui;
@@ -104,7 +106,7 @@ public class BarzahlungsWerkzeug
 
     private void okButtonGedrueckt()
     {
-
+    	informiereUeberAenderung();
         //TODO:
         //check if RestBetrag is more than GesamtBetrag if yes, set warVerkaufErfolgreich on true
 

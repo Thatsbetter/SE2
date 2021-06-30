@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kinosaal;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.SubwerkzeugObserver;
 
 /**
  * Mit diesem Werkzeug können Plätze verkauft und storniert werden. Es arbeitet
@@ -21,7 +22,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
  * @author SE2-Team
  * @version SoSe 2021
  */
-public class PlatzVerkaufsWerkzeug
+public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
 {
     // Die aktuelle Vorstellung, deren Plätze angezeigt werden. Kann null sein.
     private Vorstellung _vorstellung;
@@ -94,12 +95,8 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-    	new BarzahlungsWerkzeug(_preis);
-    	
-//    	TODO: Beobachtermuster oder nicht?
-//    	
-//    	verkaufePlaetze(_vorstellung);
-    	
+    	BarzahlungsWerkzeug bw = new BarzahlungsWerkzeug(_preis);
+    	bw.registriereBeobachter(this);
     }
 
     /**
@@ -238,4 +235,9 @@ public class PlatzVerkaufsWerkzeug
         vorstellung.stornierePlaetze(plaetze);
         aktualisierePlatzplan();
     }
+
+	@Override
+	public void reagiereAufAenderung() {
+		verkaufePlaetze(_vorstellung);
+	}
 }
