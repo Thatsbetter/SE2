@@ -98,8 +98,9 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     	_ui.setRestBetragLabel(restBetrag);
     }
     
-    private void abbrechenButtonGedrueckt()
+    public void abbrechenButtonGedrueckt()
     {
+    	_ui.schliesseFenster();
         //TODO ? _ui.getEingabeTextField();
 
     }

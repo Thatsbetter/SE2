@@ -1,6 +1,7 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -27,46 +28,43 @@ public class BarzahlungsWerkzeugUI
     {
         _dialog = new JDialog();
         _dialog.setModal(true);
-        _dialog.setSize(500, 500);
+        _dialog.setSize(800, 600);
         
-        JPanel north = new JPanel();
-        JPanel south = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(3,1));
+        _dialog.add(panel);
+
+        JPanel north = new JPanel(new GridLayout(1,3));
+        JPanel center = new JPanel(new GridLayout(1,3));
+        JPanel south = new JPanel(new GridLayout(1,2));
         
-        _dialog.add(north, BorderLayout.NORTH);
-        _dialog.add(south, BorderLayout.SOUTH);
+        //TODO font-size und aligning
         
-        JPanel northwest = new JPanel();
-        JPanel northcenter = new JPanel();
-        JPanel northeast = new JPanel();
-        
-        north.add(northwest, BorderLayout.WEST);
-        north.add(northcenter, BorderLayout.CENTER);
-        north.add(northeast, BorderLayout.EAST);
+        panel.add(north);
+        panel.add(center);
+        panel.add(south);
         
         JLabel preisLabel = new JLabel(Integer.toString(preis));
-        JLabel preisLabelTitel = new JLabel("Gesamtbetrag");
-        
-        northwest.add(preisLabel, BorderLayout.NORTH);
-        northwest.add(preisLabelTitel, BorderLayout.SOUTH);
-        
         _eingabeTextField = new JTextField();
-        JLabel eingabeLabelTitel = new JLabel("Bezahlt");
-        
-        northcenter.add(_eingabeTextField, BorderLayout.NORTH);
-        northcenter.add(eingabeLabelTitel, BorderLayout.SOUTH);
-        
         _restBetragLabel = new JLabel(Integer.toString(preis));
+        
+        north.add(preisLabel);
+        north.add(_eingabeTextField);
+        north.add(_restBetragLabel);
+               
+        JLabel preisLabelTitel = new JLabel("Gesamtbetrag");
+        JLabel eingabeLabelTitel = new JLabel("Bezahlt");
         _restBetragLabelTitel = new JLabel(RESTBETRAG);
         
-        northeast.add(_restBetragLabel, BorderLayout.NORTH);
-        northeast.add(_restBetragLabelTitel, BorderLayout.SOUTH);
-        
+        center.add(preisLabelTitel);
+        center.add(eingabeLabelTitel);
+        center.add(_restBetragLabelTitel);
+               
         _okButton = new JButton("Okay");
         _okButton.setEnabled(false);
         _abbrechenButton = new JButton("Abbrechen");
         
-        south.add(_okButton, BorderLayout.WEST);
-        south.add(_abbrechenButton, BorderLayout.EAST);
+        south.add(_okButton);
+        south.add(_abbrechenButton);
         
         _dialog.setVisible(true);
     }
