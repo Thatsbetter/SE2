@@ -1,11 +1,11 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -87,7 +87,6 @@ public class BarzahlungsWerkzeugUI
         _dialog.dispose();
     }
 
-
     /**
      * Zeigt das JDialog Fenster an 
      */
@@ -126,14 +125,7 @@ public class BarzahlungsWerkzeugUI
      */
     public void meldeFehler(String s)
     {
-        JDialog fehlerDialog = new JDialog();
-        JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
-
-        fehlerDialog.setSize(550, 150);
-        fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
-        fehlerDialog.setModal(true);
-        fehlerDialog.setLocationRelativeTo(null);
-        fehlerDialog.setVisible(true);
+        JOptionPane.showMessageDialog(null, s);
     }
 
     public JButton getOKButton()
