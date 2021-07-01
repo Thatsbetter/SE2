@@ -1,59 +1,72 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.*;
 
 public class BarzahlungsWerkzeugUI
 {
     public JDialog _dialog;
 
-    private JPanel _Titel;
-    private JPanel _Betrag;
-    private JPanel _Buttons;
-
-    private JTextField textfield0;
-    private JTextField textfield1;
-    private JTextField textfield2;
+    private JTextField _eingabeTextField;
+    private JLabel _restBetragLabel;
+    private JLabel _restBetragLabelTitel;
     
+    private JButton _okButton;
+    private JButton _abbrechenButton;
     
+    private static final String RESTBETRAG = "Restbetrag";    
+    private static final String RUECKGELD = "Rückgeld";
 
-    public BarzahlungsWerkzeugUI()
+    public BarzahlungsWerkzeugUI(int preis)
     {
         _dialog = new JDialog();
-        _dialog.setSize(300, 150);////////// am besten nach unten vor dem set visible moven 
+        // TODO dialog centered, font size 
+        
+        JPanel panel = new JPanel(new GridLayout(3,1));
+        _dialog.add(panel);
 
-        _Titel = new JPanel();
-        JLabel label1 = new JLabel("Gesamtbetrag");
-        JLabel label2 = new JLabel("Bereits Bezahlt");
-        JLabel label3 = new JLabel("noch zu zahlen");
-        _Titel.add(label1);
-        _Titel.add(label2);
-        _Titel.add(label3);
+        JPanel north = new JPanel(new GridLayout(1,3));
+        JPanel center = new JPanel(new GridLayout(1,3));
+        JPanel south = new JPanel(new GridLayout(1,2));
+               
+        panel.add(north);
+        panel.add(center);
+        panel.add(south);
+        
+        JLabel preisLabel = new JLabel(Integer.toString(preis), SwingConstants.CENTER);
+        preisLabel.setVerticalAlignment(JLabel.BOTTOM);
+        _eingabeTextField = new JTextField(SwingConstants.CENTER);
+        _restBetragLabel = new JLabel(Integer.toString(preis), SwingConstants.CENTER);
+        _restBetragLabel.setVerticalAlignment(JLabel.BOTTOM);
+        
+        north.add(preisLabel);
+        north.add(_eingabeTextField);
+        north.add(_restBetragLabel);
+               
+        JLabel preisLabelTitel = new JLabel("Gesamtbetrag", SwingConstants.CENTER);
+        preisLabelTitel.setVerticalAlignment(JLabel.TOP);
+        JLabel eingabeLabelTitel = new JLabel("Bezahlt", SwingConstants.CENTER);
+        eingabeLabelTitel.setVerticalAlignment(JLabel.TOP);
+        _restBetragLabelTitel = new JLabel(RESTBETRAG, SwingConstants.CENTER);
+        _restBetragLabelTitel.setVerticalAlignment(JLabel.TOP);
 
-        _Betrag = new JPanel();
-        textfield0 = new JTextField("10");
-        textfield1 = new JTextField("Bereits Bezahlt");
-        textfield2 = new JTextField("noch zu zahlen");
-        _Betrag.add(textfield0);
-        _Betrag.add(textfield1);
-        _Betrag.add(textfield2);
-
-        _Buttons = new JPanel();
-        JButton button1 = new JButton("ok");
-        JButton button2 = new JButton("abbrechen");
-        _Buttons.add(button1);
-        _Buttons.add(button2);
-
-        _dialog.add(_Titel, BorderLayout.SOUTH);
-        _dialog.add(_Betrag, BorderLayout.CENTER);
-        _dialog.add(_Buttons, BorderLayout.NORTH);
-
-        _dialog.setVisible(true);
+        center.add(preisLabelTitel);
+        center.add(eingabeLabelTitel);
+        center.add(_restBetragLabelTitel);
+               
+        _okButton = new JButton("Okay");
+        _okButton.setEnabled(false);
+        _abbrechenButton = new JButton("Abbrechen");
+        
+        south.add(_okButton);
+        south.add(_abbrechenButton);
     }
 
     /*
@@ -61,8 +74,64 @@ public class BarzahlungsWerkzeugUI
      */
     public void schliesseFenster()
     {
-        _dialog.dispose();
+    	_dialog.dispose();
     }
     
+    /*
+     * zeigt das dialog fenster
+     */
+    public void zeigeFenster()
+    {
+    	_dialog.setModal(true);
+        _dialog.setSize(600, 300);    
+        _dialog.setVisible(true);
+
+    }
+
+    public JButton getOKButton()
+    {
+        return _okButton;
+    }
+
+    public JButton getAbbrechenButton()
+    {
+        return _abbrechenButton;
+    }
+
+    public JTextField getEingabeTextField()
+    {
+        return _eingabeTextField;
+    }
     
+    public void setRestBetragLabel(int restBetrag)
+    {
+        _restBetragLabel.setText(Integer.toString(restBetrag));
+        System.out.println(Integer.toString(restBetrag));
+    }
+
+    public void setzeRestBetragLabelTitelAufRueckgeld(boolean b)
+    {
+    	if(b)
+    	{
+    		_restBetragLabel.setText(RUECKGELD);
+    	}
+    	else
+    	{
+    		_restBetragLabel.setText(RESTBETRAG);
+    	}
+    }
+    
+    public void meldeFehler(String s)
+    {
+        JDialog fehlerDialog = new JDialog();
+        JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
+
+
+        fehlerDialog.setSize(300, 100);
+        fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
+        fehlerDialog.setModal(true);
+        fehlerDialog.setVisible(true);
+
+    	// nicht sichtbares feld wird sichtbar gemacht, oder jdialog popup mit fehlermeldung
+    }
 }
