@@ -135,7 +135,10 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
      * Ueberprueft per RegEx ob die Eingabe gueltig ist
      * 
      * @param s Der Preis der als String uebergen wird
+     * 
      * @return true wenn der string nicht mit 0 anfaengt und kleiner 10 millionen ist und keine buchstaben enthaelt
+     *
+     * @require s != null
      */
     private boolean istEingabeGueltig(String s)
     {

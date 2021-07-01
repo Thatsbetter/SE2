@@ -112,6 +112,8 @@ public class BarzahlungsWerkzeugUI
      * Setzt die Anzeige auf Restbetrag oder Rueckgeld, je nachdem ob man genug geld bekommen hat
      * 
      * @param s Restbetrag oder Rueckgeld
+     * 
+     * @require s != null
      */
     public void setRestBetragLabelTitel(String s)
     {
@@ -122,15 +124,13 @@ public class BarzahlungsWerkzeugUI
      * oeffnet einen JDialog welcher den User ueber einen im Parameter definierten fehler informiert
      * 
      * @param s Der anzuzeigende Fehlermeldungstext
+     * 
+     * @require s != null
      */
     public void meldeFehler(String s)
     {
+        assert s != null;
         JOptionPane.showMessageDialog(null, s);
-    }
-
-    public void undoTextfeld(String s)
-    {
-    	_eingabeTextField = new JTextField(s.substring(0, s.length()-3));
     }
     
     public JButton getOKButton()
