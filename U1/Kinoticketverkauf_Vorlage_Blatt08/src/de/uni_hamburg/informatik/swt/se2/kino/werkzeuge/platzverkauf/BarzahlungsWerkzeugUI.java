@@ -29,7 +29,7 @@ public class BarzahlungsWerkzeugUI
         _dialog = new JDialog();
         _dialog.setModal(true);
         _dialog.setSize(600, 300);
-        // TODO dialog centered, font size
+        // TODO dialog centered, font size 
         
         JPanel panel = new JPanel(new GridLayout(3,1));
         _dialog.add(panel);
