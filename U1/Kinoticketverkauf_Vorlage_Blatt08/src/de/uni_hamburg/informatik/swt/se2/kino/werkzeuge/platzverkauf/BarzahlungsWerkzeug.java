@@ -63,20 +63,19 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
                     	return;
                     }
                     
-                    int restBetrag = restBetragBerechnen(Integer.parseInt(eingabe));
+                    int restBetrag = _preis - Integer.parseInt(eingabe);
                     
                     if(restBetrag > 0)
                     {
-                    	restBetragAendern(restBetrag);
-                    	_ui.setzeRestBetragLabelTitelAufRueckgeld(false);
-                    	setzeOKButtonAktiv(false);
+                    	_ui.setRestBetragLabel(restBetrag);
+                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RESTBETRAG);
+                    	_ui.getOKButton().setEnabled(false);
                 	}
                     else
                     {
-                    	// TODO Was wenn zu viel gegeben ?
-                        restBetragAendern(-restBetrag);
-                    	_ui.setzeRestBetragLabelTitelAufRueckgeld(true);
-                    	setzeOKButtonAktiv(true);
+                    	_ui.setRestBetragLabel(-restBetrag);
+                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RUECKGELD);
+                    	_ui.getOKButton().setEnabled(true);
                     }
 
                 }
@@ -86,17 +85,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     
     private boolean istEingabeGueltig(String s)
     {
-    	return s.matches("[1-9][0-9]{0-8}");
-    }
-    
-    private int restBetragBerechnen(int eingabe)
-    {
-    	return eingabe - _preis;
-    }
-    
-    private void restBetragAendern(int restBetrag)
-    {
-    	_ui.setRestBetragLabel(restBetrag);
+    	return s.matches("[1-9][0-9]{0,8}");
     }
     
     public void abbrechenButtonGedrueckt()
@@ -112,12 +101,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         //TODO:
         //check if RestBetrag is more than GesamtBetrag if yes, set warVerkaufErfolgreich on true
 
-    }
-
-    private void setzeOKButtonAktiv(boolean aktiv)
-    {
-        _ui.getOKButton()
-            .setEnabled(aktiv);
     }
 
 }

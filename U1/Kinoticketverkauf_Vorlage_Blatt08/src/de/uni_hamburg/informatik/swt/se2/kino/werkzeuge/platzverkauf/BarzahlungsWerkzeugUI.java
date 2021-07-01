@@ -21,8 +21,8 @@ public class BarzahlungsWerkzeugUI
     private JButton _okButton;
     private JButton _abbrechenButton;
     
-    private static final String RESTBETRAG = "Restbetrag";    
-    private static final String RUECKGELD = "Rückgeld";
+    public static final String RESTBETRAG = "Restbetrag";    
+    public static final String RUECKGELD = "Rückgeld";
 
     public BarzahlungsWerkzeugUI(int preis)
     {
@@ -42,7 +42,9 @@ public class BarzahlungsWerkzeugUI
         
         JLabel preisLabel = new JLabel(Integer.toString(preis), SwingConstants.CENTER);
         preisLabel.setVerticalAlignment(JLabel.BOTTOM);
-        _eingabeTextField = new JTextField(SwingConstants.CENTER);
+        
+        //TODO eingabe centered?
+        _eingabeTextField = new JTextField(SwingConstants.CENTER);        
         _restBetragLabel = new JLabel(Integer.toString(preis), SwingConstants.CENTER);
         _restBetragLabel.setVerticalAlignment(JLabel.BOTTOM);
         
@@ -109,16 +111,10 @@ public class BarzahlungsWerkzeugUI
         System.out.println(Integer.toString(restBetrag));
     }
 
-    public void setzeRestBetragLabelTitelAufRueckgeld(boolean b)
+    public void setRestBetragLabelTitel(String s)
     {
-    	if(b)
-    	{
-    		_restBetragLabel.setText(RUECKGELD);
-    	}
-    	else
-    	{
-    		_restBetragLabel.setText(RESTBETRAG);
-    	}
+    	if(s == RESTBETRAG || s == RUECKGELD)
+    		_restBetragLabelTitel.setText(s);
     }
     
     public void meldeFehler(String s)
