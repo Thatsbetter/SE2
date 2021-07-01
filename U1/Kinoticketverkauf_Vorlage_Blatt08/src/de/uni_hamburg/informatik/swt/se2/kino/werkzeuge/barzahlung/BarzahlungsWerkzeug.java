@@ -152,9 +152,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         _warErfolgreich = true;
         _ui.schliesseFenster();
     }
-        informiereUeberAenderung();
-        _ui.schliesseFenster();
-    }
 
     /**
      * Zeigt das Fenster an
