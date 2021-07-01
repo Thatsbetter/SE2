@@ -136,6 +136,11 @@ public class BarzahlungsWerkzeugUI
         fehlerDialog.setVisible(true);
     }
 
+    public void undoTextfeld(String s)
+    {
+    	_eingabeTextField = new JTextField(s.substring(0, s.length()-3));
+    }
+    
     public JButton getOKButton()
     {
         return _okButton;
