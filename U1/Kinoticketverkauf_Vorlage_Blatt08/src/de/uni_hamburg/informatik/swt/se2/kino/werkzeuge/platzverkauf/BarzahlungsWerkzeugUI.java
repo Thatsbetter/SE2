@@ -67,7 +67,6 @@ public class BarzahlungsWerkzeugUI
         
         south.add(_okButton);
         south.add(_abbrechenButton);
-        
     }
 
     /*
