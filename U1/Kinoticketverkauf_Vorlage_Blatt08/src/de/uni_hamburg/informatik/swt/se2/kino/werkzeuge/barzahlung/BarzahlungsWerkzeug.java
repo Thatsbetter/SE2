@@ -3,6 +3,9 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
 // Meine Erste Aenderung
@@ -13,6 +16,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
     public BarzahlungsWerkzeugUI _ui;
     private int _preis;
+    public boolean _warErfolgreich;
 
     public BarzahlungsWerkzeug(int preis)
     {
@@ -48,58 +52,83 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
             });
 
         _ui.getEingabeTextField()
-            .addActionListener(new ActionListener()
+            .getDocument()
+            .addDocumentListener(new DocumentListener()
             {
 
                 @Override
-                public void actionPerformed(ActionEvent e)
-                {                  
-                	String eingabe = _ui.getEingabeTextField().getText();
-                	
-                    if(!istEingabeGueltig(eingabe))
-                    {
-                    	_ui.meldeFehler("Bitte Betrag in Eurocent ohne führende Nullen angeben!");
-                    	return;
-                    }
-                    
-                    int restBetrag = _preis - Integer.parseInt(eingabe);
-                    
-                    if(restBetrag > 0)
-                    {
-                    	_ui.setRestBetragLabel(restBetrag);
-                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RESTBETRAG);
-                    	_ui.getOKButton().setEnabled(false);
-                	}
-                    else
-                    {
-                    	_ui.setRestBetragLabel(-restBetrag);
-                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RUECKGELD);
-                    	_ui.getOKButton().setEnabled(true);
-                    }
+                public void removeUpdate(DocumentEvent e)
+                {
+                    textFieldGeaendert();
+                }
+
+                @Override
+                public void insertUpdate(DocumentEvent e)
+                {
+                    textFieldGeaendert();
+
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e)
+                {
+                    textFieldGeaendert();
 
                 }
             });
 
     }
-    
+
+    private void textFieldGeaendert()
+    {
+        String eingabe = _ui.getEingabeTextField()
+            .getText();
+
+        if (!istEingabeGueltig(eingabe))
+        {
+            _ui.meldeFehler(
+                    "Bitte Betrag in Eurocent ohne führende Nullen angeben!");
+            return;
+        }
+
+        int restBetrag = _preis - Integer.parseInt(eingabe);
+
+        if (restBetrag > 0)
+        {
+            _ui.setRestBetragLabel(restBetrag);
+            _ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RESTBETRAG);
+            _ui.getOKButton()
+                .setEnabled(false);
+        }
+        else
+        {
+            _ui.setRestBetragLabel(-restBetrag);
+            _ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RUECKGELD);
+            _ui.getOKButton()
+                .setEnabled(true);
+        }
+
+    }
+
     private boolean istEingabeGueltig(String s)
     {
-    	return s.matches("[1-9][0-9]{0,8}");
+        return s.matches("[1-9][0-9]{0,8}");
     }
-    
+
     public void abbrechenButtonGedrueckt()
     {
-    	_ui.schliesseFenster();
+        _ui.schliesseFenster();
     }
 
     private void okButtonGedrueckt()
     {
-    	informiereUeberAenderung();
-    	_ui.schliesseFenster();
+        //informiereUeberAenderung();
+        _warErfolgreich = true;
+        _ui.schliesseFenster();
     }
-    
+
     public void zeigeFenster()
     {
-    	_ui.zeigeFenster();
+        _ui.zeigeFenster();
     }
 }
