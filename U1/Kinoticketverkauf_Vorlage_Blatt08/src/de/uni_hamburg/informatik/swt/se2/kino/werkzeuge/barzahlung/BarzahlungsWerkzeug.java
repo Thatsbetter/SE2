@@ -8,9 +8,6 @@ import javax.swing.event.DocumentListener;
 
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
-// Meine Erste Aenderung
-// Die Klasse muess geaendert werden
-
 public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 {
 
@@ -87,6 +84,9 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
     }
 
+    /*
+     * wird gerufen, wenn sich die eingabe ändert und aktualisiert den Restbetrag oder zeigt eine Fehlermeldung an.
+     */
     private void textFieldGeaendert()
     {
         String eingabe = _ui.getEingabeTextField()
@@ -146,11 +146,10 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     }
 
     /*
-     * TODO ... und schliesst das Fenster
+     * setzt _warErfolgreich auf true und schließt BarzahlungsUI
      */
     private void okButtonGedrueckt()
     {
-        //informiereUeberAenderung();
         _warErfolgreich = true;
         _ui.schliesseFenster();
     }
