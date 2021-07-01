@@ -24,6 +24,11 @@ public class BarzahlungsWerkzeugUI
     public static final String RESTBETRAG = "Restbetrag";
     public static final String RUECKGELD = "Rückgeld";
 
+    /**
+     * erzeugt das Panel, dass zur Barzahlung verwendet wird
+     * 
+     * @param preis der zu zahlende Preis um die Ausgewaehlten Plaetze zu ergattern
+     */
     public BarzahlungsWerkzeugUI(int preis)
     {
         _dialog = new JDialog();
@@ -74,16 +79,17 @@ public class BarzahlungsWerkzeugUI
         south.add(_abbrechenButton);
     }
 
-    /*
-     * schliesst das dialog fenster
+    /**
+     * Schliesst das JDialog Fenster und macht Ressourcen frei
      */
     public void schliesseFenster()
     {
         _dialog.dispose();
     }
 
-    /*
-     * zeigt das dialog fenster
+
+    /**
+     * Zeigt das JDialog Fenster an 
      */
     public void zeigeFenster()
     {
@@ -91,7 +97,48 @@ public class BarzahlungsWerkzeugUI
         _dialog.setSize(600, 300);
         _dialog.setLocationRelativeTo(null);
         _dialog.setVisible(true);
+    }
 
+    public JTextField getEingabeTextField()
+    {
+        return _eingabeTextField;
+    }
+
+    /**
+    * Aendert den angezeigten Restbetrag der noch zu zahlen ist
+    * 
+    * @param restBetrag der noch zu zahlenden Restbetrag
+    */
+    public void setRestBetragLabel(int restBetrag)
+    {
+        _restBetragLabel.setText(Integer.toString(restBetrag));
+    }
+
+    /**
+     * Setzt die Anzeige auf Restbetrag oder Rueckgeld, je nachdem ob man genug geld bekommen hat
+     * 
+     * @param s Restbetrag oder Rueckgeld
+     */
+    public void setRestBetragLabelTitel(String s)
+    {
+        if (s == RESTBETRAG || s == RUECKGELD) _restBetragLabelTitel.setText(s);
+    }
+
+    /**
+     * oeffnet einen JDialog welcher den User ueber einen im Parameter definierten fehler informiert
+     * 
+     * @param s Der anzuzeigende Fehlermeldungstext
+     */
+    public void meldeFehler(String s)
+    {
+        JDialog fehlerDialog = new JDialog();
+        JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
+
+        fehlerDialog.setSize(550, 150);
+        fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
+        fehlerDialog.setModal(true);
+        fehlerDialog.setLocationRelativeTo(null);
+        fehlerDialog.setVisible(true);
     }
 
     public JButton getOKButton()
@@ -107,29 +154,5 @@ public class BarzahlungsWerkzeugUI
     public JTextField getEingabeTextField()
     {
         return _eingabeTextField;
-    }
-
-    public void setRestBetragLabel(int restBetrag)
-    {
-        _restBetragLabel.setText(Integer.toString(restBetrag));
-    }
-
-    public void setRestBetragLabelTitel(String s)
-    {
-        if (s == RESTBETRAG || s == RUECKGELD) _restBetragLabelTitel.setText(s);
-    }
-
-    public void meldeFehler(String s)
-    {
-        JDialog fehlerDialog = new JDialog();
-        JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
-
-        fehlerDialog.setSize(550, 150);
-        fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
-        fehlerDialog.setModal(true);
-        fehlerDialog.setLocationRelativeTo(null);
-        fehlerDialog.setVisible(true);
-
-        // nicht sichtbares feld wird sichtbar gemacht, oder jdialog popup mit fehlermeldung
     }
 }

@@ -18,6 +18,11 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     private int _preis;
     public boolean _warErfolgreich;
 
+    /**
+     * initialisiert unser Barzahlungswerkzeug
+     * 
+     * @param preis der Preis der ausgewaehlten plaete
+     */
     public BarzahlungsWerkzeug(int preis)
     {
         _ui = new BarzahlungsWerkzeugUI(preis);
@@ -25,6 +30,10 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         registriereUIAktionen();
     }
 
+    /**
+     * fuegt den Buttons aus der UI actionlistener hinzu, damit die buttons auch auf ihre aktivierung reagieren
+    
+     */
     private void registriereUIAktionen()
     {
         _ui.getOKButton()
@@ -73,7 +82,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
                 public void changedUpdate(DocumentEvent e)
                 {
                     textFieldGeaendert();
-
                 }
             });
 
@@ -93,6 +101,13 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
         int restBetrag = _preis - Integer.parseInt(eingabe);
 
+    /**
+     * aktualisiert die einzelnen UI Elemente
+     * 
+     * @param restBetrag Der aktuelle Betrag der noch zu zahlen ist
+     */
+    private void aktualisiereBetragsAnzeige(int restBetrag)
+    {
         if (restBetrag > 0)
         {
             _ui.setRestBetragLabel(restBetrag);
@@ -107,26 +122,43 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
             _ui.getOKButton()
                 .setEnabled(true);
         }
-
     }
-
+    
+    /**
+     * Ueberprueft per RegEx ob die Eingabe gueltig ist
+     * 
+     * @param s Der Preis der als String uebergen wird
+     * @return true wenn der string nicht mit 0 anfaengt und kleiner 10 millionen ist und keine buchstaben enthaelt
+     */
     private boolean istEingabeGueltig(String s)
     {
         return s.matches("[1-9][0-9]{0,8}");
     }
 
+    /**
+     * Schliesst unser Fenster
+     */
     public void abbrechenButtonGedrueckt()
     {
         _ui.schliesseFenster();
     }
 
+    /*
+     * TODO ... und schliesst das Fenster
+     */
     private void okButtonGedrueckt()
     {
         //informiereUeberAenderung();
         _warErfolgreich = true;
         _ui.schliesseFenster();
     }
+        informiereUeberAenderung();
+        _ui.schliesseFenster();
+    }
 
+    /**
+     * Zeigt das Fenster an
+     */
     public void zeigeFenster()
     {
         _ui.zeigeFenster();
