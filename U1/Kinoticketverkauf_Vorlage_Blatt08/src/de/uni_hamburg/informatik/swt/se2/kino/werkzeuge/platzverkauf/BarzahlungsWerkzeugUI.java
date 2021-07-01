@@ -27,8 +27,6 @@ public class BarzahlungsWerkzeugUI
     public BarzahlungsWerkzeugUI(int preis)
     {
         _dialog = new JDialog();
-        _dialog.setModal(true);
-        _dialog.setSize(600, 300);
         // TODO dialog centered, font size 
         
         JPanel panel = new JPanel(new GridLayout(3,1));
@@ -70,7 +68,6 @@ public class BarzahlungsWerkzeugUI
         south.add(_okButton);
         south.add(_abbrechenButton);
         
-        _dialog.setVisible(true);
     }
 
     /*
@@ -78,7 +75,18 @@ public class BarzahlungsWerkzeugUI
      */
     public void schliesseFenster()
     {
-        _dialog.dispose();
+    	_dialog.dispose();
+    }
+    
+    /*
+     * zeigt das dialog fenster
+     */
+    public void zeigeFenster()
+    {
+    	_dialog.setModal(true);
+        _dialog.setSize(600, 300);    
+        _dialog.setVisible(true);
+
     }
 
     public JButton getOKButton()

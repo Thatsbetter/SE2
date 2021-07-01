@@ -19,6 +19,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         _ui = new BarzahlungsWerkzeugUI(preis);
         _preis = preis;
         registriereUIAktionen();
+        _ui.zeigeFenster();
     }
 
     private void registriereUIAktionen()
