@@ -27,7 +27,7 @@ public class BarzahlungsWerkzeugUI
     /**
      * erzeugt das Panel, dass zur Barzahlung verwendet wird
      * 
-     * @param preis
+     * @param preis der zu zahlende Preis um die Ausgewaehlten Plaetze zu ergattern
      */
     public BarzahlungsWerkzeugUI(int preis)
     {
@@ -79,7 +79,7 @@ public class BarzahlungsWerkzeugUI
         south.add(_abbrechenButton);
     }
 
-    /*
+    /**
      * Schliesst das JDialog Fenster und macht Ressourcen frei
      */
     public void schliesseFenster()
