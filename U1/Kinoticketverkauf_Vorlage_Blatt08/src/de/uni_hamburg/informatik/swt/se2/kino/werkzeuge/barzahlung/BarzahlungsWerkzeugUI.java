@@ -99,11 +99,6 @@ public class BarzahlungsWerkzeugUI
         _dialog.setVisible(true);
     }
 
-    public JTextField getEingabeTextField()
-    {
-        return _eingabeTextField;
-    }
-
     /**
     * Aendert den angezeigten Restbetrag der noch zu zahlen ist
     * 

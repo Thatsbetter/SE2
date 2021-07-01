@@ -98,8 +98,10 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
                     "Bitte Betrag in Eurocent ohne führende Nullen angeben!");
             return;
         }
-
+        
         int restBetrag = _preis - Integer.parseInt(eingabe);
+        aktualisiereBetragsAnzeige(restBetrag);
+    }
 
     /**
      * aktualisiert die einzelnen UI Elemente
