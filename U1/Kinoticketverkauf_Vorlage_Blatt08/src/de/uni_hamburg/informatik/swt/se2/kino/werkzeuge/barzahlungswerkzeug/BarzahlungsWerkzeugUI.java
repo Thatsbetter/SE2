@@ -1,4 +1,4 @@
-package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf;
+package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlungswerkzeug;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
