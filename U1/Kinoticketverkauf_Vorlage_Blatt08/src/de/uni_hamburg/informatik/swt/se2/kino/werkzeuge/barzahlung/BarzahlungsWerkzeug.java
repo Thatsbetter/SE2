@@ -94,14 +94,19 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
         if (!istEingabeGueltig(eingabe))
         {
-            _ui.meldeFehler(
+        	_ui.meldeFehler(
                     "Bitte Betrag in Eurocent ohne führende Nullen angeben!");
             return;
         }
-        
-        int restBetrag = _preis - Integer.parseInt(eingabe);
-        aktualisiereBetragsAnzeige(restBetrag);
-    }
+        if (!eingabe.isEmpty())
+        {
+            int restBetrag = _preis - Integer.parseInt(eingabe);
+            aktualisiereBetragsAnzeige(restBetrag);
+            return;
+        }
+        aktualisiereBetragsAnzeige(_preis);    }
+    
+    
 
     /**
      * aktualisiert die einzelnen UI Elemente
@@ -134,7 +139,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
      */
     private boolean istEingabeGueltig(String s)
     {
-        return s.matches("[1-9][0-9]{0,8}");
+        return s.matches("[1-9][0-9]{0,8}") || s.isEmpty();
     }
 
     /**

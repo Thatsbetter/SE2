@@ -128,6 +128,11 @@ public class BarzahlungsWerkzeugUI
         JOptionPane.showMessageDialog(null, s);
     }
 
+    public void undoTextfeld(String s)
+    {
+    	_eingabeTextField = new JTextField(s.substring(0, s.length()-3));
+    }
+    
     public JButton getOKButton()
     {
         return _okButton;
