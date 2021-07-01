@@ -97,6 +97,7 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
     {
     	BarzahlungsWerkzeug bw = new BarzahlungsWerkzeug(_preis);
     	bw.registriereBeobachter(this);
+    	bw.zeigeFenster();
     }
 
     /**

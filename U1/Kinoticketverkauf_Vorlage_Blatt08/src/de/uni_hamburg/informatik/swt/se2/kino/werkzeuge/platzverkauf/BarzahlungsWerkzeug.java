@@ -19,7 +19,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         _ui = new BarzahlungsWerkzeugUI(preis);
         _preis = preis;
         registriereUIAktionen();
-        _ui.zeigeFenster();
     }
 
     private void registriereUIAktionen()
@@ -91,16 +90,16 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     public void abbrechenButtonGedrueckt()
     {
     	_ui.schliesseFenster();
-        //TODO ? _ui.getEingabeTextField();
-
     }
 
     private void okButtonGedrueckt()
     {
     	informiereUeberAenderung();
-        //TODO:
-        //check if RestBetrag is more than GesamtBetrag if yes, set warVerkaufErfolgreich on true
-
+    	_ui.schliesseFenster();
     }
-
+    
+    public void zeigeFenster()
+    {
+    	_ui.zeigeFenster();
+    }
 }
