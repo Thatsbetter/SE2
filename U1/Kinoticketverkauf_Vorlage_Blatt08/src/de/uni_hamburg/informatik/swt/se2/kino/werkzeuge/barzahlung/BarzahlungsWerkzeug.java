@@ -64,22 +64,27 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
                     
                     int restBetrag = _preis - Integer.parseInt(eingabe);
                     
-                    if(restBetrag > 0)
-                    {
-                    	_ui.setRestBetragLabel(restBetrag);
-                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RESTBETRAG);
-                    	_ui.getOKButton().setEnabled(false);
-                	}
-                    else
-                    {
-                    	_ui.setRestBetragLabel(-restBetrag);
-                    	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RUECKGELD);
-                    	_ui.getOKButton().setEnabled(true);
-                    }
-
+                    aktualisiereBetragsAnzeige(restBetrag);
+                    
                 }
             });
 
+    }
+    
+    private void aktualisiereBetragsAnzeige(int restBetrag)
+    {
+    	if(restBetrag > 0)
+        {
+        	_ui.setRestBetragLabel(restBetrag);
+        	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RESTBETRAG);
+        	_ui.getOKButton().setEnabled(false);
+    	}
+        else
+        {
+        	_ui.setRestBetragLabel(-restBetrag);
+        	_ui.setRestBetragLabelTitel(BarzahlungsWerkzeugUI.RUECKGELD);
+        	_ui.getOKButton().setEnabled(true);
+        }
     }
     
     private boolean istEingabeGueltig(String s)

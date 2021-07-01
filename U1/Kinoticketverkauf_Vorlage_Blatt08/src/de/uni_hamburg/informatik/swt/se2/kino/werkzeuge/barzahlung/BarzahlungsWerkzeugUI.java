@@ -117,12 +117,11 @@ public class BarzahlungsWerkzeugUI
     	if(s == RESTBETRAG || s == RUECKGELD)
     		_restBetragLabelTitel.setText(s);
     }
-    
+   
     public void meldeFehler(String s)
     {
         JDialog fehlerDialog = new JDialog();
         JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
-
 
         fehlerDialog.setSize(550, 150);
         fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
@@ -130,6 +129,6 @@ public class BarzahlungsWerkzeugUI
         fehlerDialog.setLocationRelativeTo(null);
         fehlerDialog.setVisible(true);
 
-    	// nicht sichtbares feld wird sichtbar gemacht, oder jdialog popup mit fehlermeldung
+    	
     }
 }
