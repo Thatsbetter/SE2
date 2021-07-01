@@ -64,6 +64,7 @@ class KassenWerkzeugUI
     public void zeigeFenster()
     {
         _frame.setSize(1200, 900);
+        _frame.setLocationRelativeTo(null);
         _frame.setVisible(true);
     }
 

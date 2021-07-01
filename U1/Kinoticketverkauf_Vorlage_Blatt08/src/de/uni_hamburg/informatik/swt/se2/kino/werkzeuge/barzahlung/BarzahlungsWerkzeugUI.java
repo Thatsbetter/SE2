@@ -27,7 +27,7 @@ public class BarzahlungsWerkzeugUI
     public BarzahlungsWerkzeugUI(int preis)
     {
         _dialog = new JDialog();
-        // TODO dialog centered, font size 
+        // TODO dialog font size 
         
         JPanel panel = new JPanel(new GridLayout(3,1));
         _dialog.add(panel);
@@ -85,7 +85,8 @@ public class BarzahlungsWerkzeugUI
     public void zeigeFenster()
     {
     	_dialog.setModal(true);
-        _dialog.setSize(600, 300);    
+        _dialog.setSize(600, 300);  
+        _dialog.setLocationRelativeTo(null);
         _dialog.setVisible(true);
 
     }
@@ -123,9 +124,10 @@ public class BarzahlungsWerkzeugUI
         JLabel fehlerLabel = new JLabel(s, SwingConstants.CENTER);
 
 
-        fehlerDialog.setSize(300, 100);
+        fehlerDialog.setSize(550, 150);
         fehlerDialog.add(fehlerLabel, BorderLayout.CENTER);
         fehlerDialog.setModal(true);
+        fehlerDialog.setLocationRelativeTo(null);
         fehlerDialog.setVisible(true);
 
     	// nicht sichtbares feld wird sichtbar gemacht, oder jdialog popup mit fehlermeldung
