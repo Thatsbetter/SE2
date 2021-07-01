@@ -3,6 +3,9 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
 // Meine Erste Aenderung
@@ -13,6 +16,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
     public BarzahlungsWerkzeugUI _ui;
     private int _preis;
+    public boolean _warErfolgreich;
 
     /**
      * initialisiert unser Barzahlungswerkzeug
@@ -57,30 +61,45 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
             });
 
         _ui.getEingabeTextField()
-            .addActionListener(new ActionListener()
+            .getDocument()
+            .addDocumentListener(new DocumentListener()
             {
 
                 @Override
-                public void actionPerformed(ActionEvent e)
+                public void removeUpdate(DocumentEvent e)
                 {
-                    String eingabe = _ui.getEingabeTextField()
-                        .getText();
+                    textFieldGeaendert();
+                }
 
-                    if (!istEingabeGueltig(eingabe))
-                    {
-                        _ui.meldeFehler(
-                                "Bitte Betrag in Eurocent ohne führende Nullen angeben!");
-                        return;
-                    }
+                @Override
+                public void insertUpdate(DocumentEvent e)
+                {
+                    textFieldGeaendert();
 
-                    int restBetrag = _preis - Integer.parseInt(eingabe);
+                }
 
-                    aktualisiereBetragsAnzeige(restBetrag);
-
+                @Override
+                public void changedUpdate(DocumentEvent e)
+                {
+                    textFieldGeaendert();
                 }
             });
 
     }
+
+    private void textFieldGeaendert()
+    {
+        String eingabe = _ui.getEingabeTextField()
+            .getText();
+
+        if (!istEingabeGueltig(eingabe))
+        {
+            _ui.meldeFehler(
+                    "Bitte Betrag in Eurocent ohne führende Nullen angeben!");
+            return;
+        }
+
+        int restBetrag = _preis - Integer.parseInt(eingabe);
 
     /**
      * aktualisiert die einzelnen UI Elemente
@@ -104,7 +123,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
                 .setEnabled(true);
         }
     }
-
+    
     /**
      * Ueberprueft per RegEx ob die Eingabe gueltig ist
      * 
@@ -129,6 +148,10 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
      */
     private void okButtonGedrueckt()
     {
+        //informiereUeberAenderung();
+        _warErfolgreich = true;
+        _ui.schliesseFenster();
+    }
         informiereUeberAenderung();
         _ui.schliesseFenster();
     }

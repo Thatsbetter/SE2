@@ -87,6 +87,7 @@ public class BarzahlungsWerkzeugUI
         _dialog.dispose();
     }
 
+
     /**
      * Zeigt das JDialog Fenster an 
      */
@@ -98,6 +99,11 @@ public class BarzahlungsWerkzeugUI
         _dialog.setVisible(true);
     }
 
+    public JTextField getEingabeTextField()
+    {
+        return _eingabeTextField;
+    }
+
     /**
     * Aendert den angezeigten Restbetrag der noch zu zahlen ist
     * 
@@ -106,7 +112,6 @@ public class BarzahlungsWerkzeugUI
     public void setRestBetragLabel(int restBetrag)
     {
         _restBetragLabel.setText(Integer.toString(restBetrag));
-        System.out.println(Integer.toString(restBetrag));
     }
 
     /**

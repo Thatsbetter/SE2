@@ -27,7 +27,7 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
 {
     // Die aktuelle Vorstellung, deren Plätze angezeigt werden. Kann null sein.
     private Vorstellung _vorstellung;
-    
+
     private int _preis;
 
     private PlatzVerkaufsWerkzeugUI _ui;
@@ -61,34 +61,35 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void registriereUIAktionen()
     {
-        _ui.getVerkaufenButton().addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
+        _ui.getVerkaufenButton()
+            .addActionListener(new ActionListener()
             {
-                fuehreBarzahlungDurch();
-            }
-        });
-
-        _ui.getStornierenButton().addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                stornierePlaetze(_vorstellung);
-            }
-        });
-
-        _ui.getPlatzplan().addPlatzSelectionListener(
-                new PlatzSelectionListener()
+                @Override
+                public void actionPerformed(ActionEvent e)
                 {
-                    @Override
-                    public void auswahlGeaendert(PlatzSelectionEvent event)
-                    {
-                        reagiereAufNeuePlatzAuswahl(event
-                                .getAusgewaehltePlaetze());
-                    }
-                });
+                    fuehreBarzahlungDurch();
+                }
+            });
+
+        _ui.getStornierenButton()
+            .addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    stornierePlaetze(_vorstellung);
+                }
+            });
+
+        _ui.getPlatzplan()
+            .addPlatzSelectionListener(new PlatzSelectionListener()
+            {
+                @Override
+                public void auswahlGeaendert(PlatzSelectionEvent event)
+                {
+                    reagiereAufNeuePlatzAuswahl(event.getAusgewaehltePlaetze());
+                }
+            });
     }
 
     /**
@@ -96,9 +97,10 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void fuehreBarzahlungDurch()
     {
-    	BarzahlungsWerkzeug bw = new BarzahlungsWerkzeug(_preis);
-    	bw.registriereBeobachter(this);
-    	bw.zeigeFenster();
+        BarzahlungsWerkzeug bw = new BarzahlungsWerkzeug(_preis);
+        //bw.registriereBeobachter(this);
+        bw.zeigeFenster();
+        if (bw._warErfolgreich) verkaufePlaetze(_vorstellung);
     }
 
     /**
@@ -109,8 +111,10 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void reagiereAufNeuePlatzAuswahl(Set<Platz> plaetze)
     {
-        _ui.getVerkaufenButton().setEnabled(istVerkaufenMoeglich(plaetze));
-        _ui.getStornierenButton().setEnabled(istStornierenMoeglich(plaetze));
+        _ui.getVerkaufenButton()
+            .setEnabled(istVerkaufenMoeglich(plaetze));
+        _ui.getStornierenButton()
+            .setEnabled(istStornierenMoeglich(plaetze));
         aktualisierePreisanzeige(plaetze);
     }
 
@@ -121,25 +125,25 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
     {
         if (istVerkaufenMoeglich(plaetze))
         {
-        	_preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-            _ui.getPreisLabel().setText(
-                    "Gesamtpreis: " + _preis + " Eurocent");
+            _preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            _ui.getPreisLabel()
+                .setText("Gesamtpreis: " + _preis + " Eurocent");
         }
         else if (istStornierenMoeglich(plaetze))
         {
-        	_preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-            _ui.getPreisLabel().setText(
-                    "Gesamtstorno: " + _preis + " Eurocent");
+            _preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            _ui.getPreisLabel()
+                .setText("Gesamtstorno: " + _preis + " Eurocent");
         }
         else if (!plaetze.isEmpty())
         {
-            _ui.getPreisLabel().setText(
-                    "Verkauf und Storno nicht gleichzeitig möglich!");
+            _ui.getPreisLabel()
+                .setText("Verkauf und Storno nicht gleichzeitig möglich!");
         }
         else
         {
-            _ui.getPreisLabel().setText(
-                    "Gesamtpreis: 0 Eurocent");
+            _ui.getPreisLabel()
+                .setText("Gesamtpreis: 0 Eurocent");
         }
     }
 
@@ -199,7 +203,8 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void initialisierePlatzplan(int reihen, int sitzeProReihe)
     {
-        _ui.getPlatzplan().setAnzahlPlaetze(reihen, sitzeProReihe);
+        _ui.getPlatzplan()
+            .setAnzahlPlaetze(reihen, sitzeProReihe);
     }
 
     /**
@@ -213,7 +218,8 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
         {
             if (!_vorstellung.istVerkaufbar(platz))
             {
-                _ui.getPlatzplan().markierePlatzAlsVerkauft(platz);
+                _ui.getPlatzplan()
+                    .markierePlatzAlsVerkauft(platz);
             }
         }
     }
@@ -223,7 +229,8 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void verkaufePlaetze(Vorstellung vorstellung)
     {
-        Set<Platz> plaetze = _ui.getPlatzplan().getAusgewaehltePlaetze();
+        Set<Platz> plaetze = _ui.getPlatzplan()
+            .getAusgewaehltePlaetze();
         vorstellung.verkaufePlaetze(plaetze);
         aktualisierePlatzplan();
     }
@@ -233,13 +240,15 @@ public class PlatzVerkaufsWerkzeug implements SubwerkzeugObserver
      */
     private void stornierePlaetze(Vorstellung vorstellung)
     {
-        Set<Platz> plaetze = _ui.getPlatzplan().getAusgewaehltePlaetze();
+        Set<Platz> plaetze = _ui.getPlatzplan()
+            .getAusgewaehltePlaetze();
         vorstellung.stornierePlaetze(plaetze);
         aktualisierePlatzplan();
     }
 
-	@Override
-	public void reagiereAufAenderung() {
-		verkaufePlaetze(_vorstellung);
-	}
+    @Override
+    public void reagiereAufAenderung()
+    {
+        verkaufePlaetze(_vorstellung);
+    }
 }
