@@ -84,7 +84,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
 
     }
 
-    /*
+    /**
      * wird gerufen, wenn sich die eingabe ändert und aktualisiert den Restbetrag oder zeigt eine Fehlermeldung an.
      */
     private void textFieldGeaendert()
@@ -145,7 +145,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         _ui.schliesseFenster();
     }
 
-    /*
+    /**
      * setzt _warErfolgreich auf true und schließt BarzahlungsUI
      */
     private void okButtonGedrueckt()
